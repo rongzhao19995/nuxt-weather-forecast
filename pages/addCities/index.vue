@@ -34,6 +34,8 @@ export default {
     const cityList = await $axios.$get(
       "https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/cities.json"
     );
+
+    
     // console.log(cityList);
     return { cityList };
   },
