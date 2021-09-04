@@ -75,3 +75,43 @@ uigradients https://uigradients.com/#MoonlitAsteroid
 feathericon https://feathericons.com/?query=more
 bbox http://bboxfinder.com/#1.296276,99.942627,6.500899,104.611816
 bbox https://lab.lmnixon.org/4th/worldcapitals.html
+
+
+### `Technology Used`
+
+<table>
+  <tr>
+    <th>Languages</th>
+    <th>Databases</th>
+    <th>Software</th>
+  </tr>
+  <tr>
+    <th><a href="https://nodejs.dev/"><img src="https://img.shields.io/badge/-NodeJS-313131?style=flat-square&labelColor=313131&logo=node.js&logoColor=white&color=313131"></img></a></th>
+    <th><a href="https://firebase.google.com/products/firestore/"><img src="https://img.shields.io/badge/-Cloud Firestore-313131?style=flat-square&labelColor=313131&logo=firebase&logoColor=white&color=313131"></img></a></th>
+    <th><a href="https://code.visualstudio.com"><img src="https://img.shields.io/badge/-Visual Studio Code-313131?style=flat-square&labelColor=313131&logo=visual-studio-code&logoColor=white&color=313131"></img></a></th>
+  </tr>
+
+  <tr>
+    <th><a href="https://www.w3schools.com/html/html_intro.asp"><img src="https://img.shields.io/badge/-HTML5-313131?style=flat-square&labelColor=313131&logo=html5&logoColor=white&color=313131"></img></a></th>
+    <th><a href="https://firebase.google.com/products/realtime-database/"><img src="https://img.shields.io/badge/-Realtime DB-313131?style=flat-square&labelColor=313131&logo=firebase&logoColor=white&color=313131"></img></a></th>
+  </tr>
+
+  <tr>
+    <th><a href="https://www.w3schools.com/css/css_intro.asp"><img src="https://img.shields.io/badge/-CSS3-313131?style=flat-square&labelColor=313131&logo=css3&logoColor=white&color=313131"></img></a></th>
+  </tr>
+ 
+  <tr>
+    <th><a href="https://www.javascript.com"><img src="https://img.shields.io/badge/-Javascript-313131?style=flat-square&labelColor=313131&logo=javascript&logoColor=white&color=313131"></img></a></th>
+    <th><strong>Frameworks</strong></th>
+    <th><a href="https://www.blender.org"><img src="https://img.shields.io/badge/-Blender-313131?style=flat-square&labelColor=313131&logo=blender&logoColor=white&color=313131"></img></a></th>
+  </tr>
+
+ 
+  <tr>
+    <th><a href="http://expressjs.com"><img src="https://img.shields.io/badge/-ExpressJS-313131?style=flat-square&labelColor=313131&logo=express&logoColor=white&color=313131"></img></a></th>
+  </tr>
+  
+  <tr>
+    <th><a href="https://vuejs.org"><img src="https://img.shields.io/badge/-VueJS-313131?style=flat-square&labelColor=313131&logo=vue.js&logoColor=white&color=313131"></img></a></th>
+  </tr>
+</table>
