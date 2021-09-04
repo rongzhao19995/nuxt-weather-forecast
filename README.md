@@ -45,11 +45,43 @@
 
 <table>
   <tr>
+    <th>Number></th>
     <th>Functionality</th>
     <th>Check</th>
   </tr>
   <tr>
+    <th>1.</th>
     <th>Provide 30 cities selection for the user to choose to check the weather</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>2.</th>
+    <th>The weather data display will change according to the selection.</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>3.</th>
+    <th>A feature to use “Current Location” to display the weather information. This will detect user current location and get the geolocation, and call to the API using longitude and latitude.</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>4.</th>
+    <th>Provides 5 days weather forecast for the selected location</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>5.</th>
+    <th>Display 3 cities (ref: stated in Basic Requirement 4) weather data in carousel/tab view.</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>6.</th>
+    <th>Allow users to add the cities and the added city will in the carousel/ tab view.</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
+  </tr>
+  <tr>
+    <th>7.</th>
+    <th>Added city will be persisted. Once the web app is closed, the added city is still valid.</th>
     <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
   </tr>
 </table>
