@@ -102,8 +102,6 @@ bbox https://lab.lmnixon.org/4th/worldcapitals.html
  
   <tr>
     <th><a href="https://www.javascript.com"><img src="https://img.shields.io/badge/-Javascript-313131?style=flat-square&labelColor=313131&logo=javascript&logoColor=white&color=313131"></img></a></th>
-    <th><strong>Frameworks</strong></th>
-    <th><a href="https://www.blender.org"><img src="https://img.shields.io/badge/-Blender-313131?style=flat-square&labelColor=313131&logo=blender&logoColor=white&color=313131"></img></a></th>
   </tr>
 
  
