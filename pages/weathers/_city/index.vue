@@ -19,5 +19,17 @@ export default {
     };
   },
   methods: {},
+    head() {
+    return {
+      title: `${this.$route.params.city} | Weather Forecast `,
+      meta: [
+        {
+          hid: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          name: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          content: "Weather Forecast By LANCE | Home HID SEO Purpose",
+        },
+      ],
+    };
+  },
 };
 </script>

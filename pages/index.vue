@@ -1,8 +1,15 @@
 <template>
-  <div
-    class="screen-mode section flex flex-col items-center min-h-screen"
-  >
-    <div class="dark_overlay flex flex-col md:justify-center items-center sm:justify-start min-h-screen">
+  <div class="screen-mode section flex flex-col items-center min-h-screen">
+    <div
+      class="
+        dark_overlay
+        flex flex-col
+        md:justify-center
+        items-center
+        sm:justify-start
+        min-h-screen
+      "
+    >
       <!-- <Tutorial /> -->
       <!-- <SampleComponent /> -->
       <div class="z-10 mt-10 md:mt-20">
@@ -13,9 +20,12 @@
         />
       </div>
       <!-- <transition name="fade"> -->
-        <div class="z-0 mt-60 md:mt-32" :key="displayWeather.name">
-          <WeatherCard :data="displayWeather" @detailBtnHandler="handleRouteToDetail"/>
-        </div>
+      <div class="z-0 mt-60 md:mt-32" :key="displayWeather.name">
+        <WeatherCard
+          :data="displayWeather"
+          @detailBtnHandler="handleRouteToDetail"
+        />
+      </div>
       <!-- </transition> -->
       <!-- <SampleSwiper/> -->
       <!-- {{cityList}} -->
@@ -99,14 +109,26 @@ export default {
           console.log("sucess");
         });
     },
-      handleRouteToDetail() {
-      console.log('handleRouteToDetail');
-      const { city, latitude, longitude} = this.selectedCity;
+    handleRouteToDetail() {
+      console.log("handleRouteToDetail");
+      const { city, latitude, longitude } = this.selectedCity;
       this.$router.push({
         path: `/weathers/${city}`,
         query: { longitude, latitude },
       });
     },
+  },
+  head() {
+    return {
+      title: "Weather Forecast By LANCE | Home",
+      meta: [
+        {
+          hid: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          name: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          content: "Weather Forecast By LANCE | Home HID SEO Purpose",
+        },
+      ],
+    };
   },
 };
 </script>
@@ -114,9 +136,17 @@ export default {
 
 <style lang="postcss" scoped>
 .screen-mode {
-background: #232526;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #414345,
+    #232526
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #414345,
+    #232526
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   &.rain {
     background-position: center;

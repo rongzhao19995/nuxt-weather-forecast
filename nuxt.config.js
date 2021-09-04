@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-weather-forecast',
+    title: 'Weather Forecast By LANCE',
     htmlAttrs: {
       lang: 'en'
     },
