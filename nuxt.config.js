@@ -16,7 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito&display=swap"},
+      { rel: 'stylesheet', href: "https://fonts.googleapis.com/css2?family=Nunito&display=swap" },
     ]
   },
 
@@ -29,9 +29,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // { src: '@/plugins/nuxt-awesome-swiper.js', mode: 'client' },
-      // { src: '~plugins/nuxt-swiper-plugin.js', mode:'client' },
-      { src: '~/plugins/vue-awesome-swiper.js', ssr: false }
+    { src: '~/plugins/vue-awesome-swiper.js', ssr: false },
+    { src: '~/plugins/lodash.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,7 +48,7 @@ export default {
   ],
 
   axios: {
-    credentials:false,
+    credentials: false,
     retry: { retries: 3 },
   },
 

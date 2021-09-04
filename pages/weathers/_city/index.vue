@@ -9,14 +9,6 @@
 
 <script>
 export default {
-//   async asyncData(context, $axios ) {
-//     console.log(context.route);
-//     // const { longitude, latitude } = context.route.query;
-//     const ip = await $axios.$get(
-//       `https://api.openweathermap.org/data/2.5/forecast?lat=${longitude}&lon=${latitude}&appid=c693e03c327c176701a0473b51524b8d`
-//     );
-//     return { ip };
-//   },
   async asyncData(context ) {
       const { latitude, longitude} = context.route.query;
     const cityList = await context.app.$axios.$get(
@@ -24,17 +16,13 @@ export default {
     );
     return { cityList };
   },
-  mounted() {
-      this.data = this.cityList;
-  },
   data() {
     return {
-      data: "",
+      cityList: {},
     };
   },
   methods: {
     handleClick() {
-      debugger;
     },
   },
 };

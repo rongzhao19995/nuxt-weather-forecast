@@ -311,9 +311,9 @@ export default {
   background-color: #222831;
   height: 400px;
 
-    @media (max-width: 640px) {
-	 height: 300px;
-}
+  @media (max-width: 640px) {
+    height: 300px;
+  }
 }
 
 .weather-side {
@@ -469,6 +469,10 @@ export default {
 .location-container {
   @apply mt-auto;
   padding: 25px 35px;
+
+   @media (max-width: 640px) {
+     @apply mt-4;
+  }
 }
 
 .location-button {
@@ -493,9 +497,11 @@ export default {
 
 .mobile-info {
   @apply absolute rounded-3xl px-8 py-3;
-  top: -150px;
+  top: -180px;
   margin: auto;
   left: 0;
   right: 0;
+  width:320px;
+
 }
 </style>

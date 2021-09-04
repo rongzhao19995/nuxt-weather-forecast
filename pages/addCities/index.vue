@@ -3,7 +3,11 @@
     <h1>Add Cities Page</h1>
 
     <ol v-for="(city, idx) in cityList" :key="idx">
-      <button @click="()=> handleRouteToDetail(city.city, city.longitude, city.latitude)">
+      <button
+        @click="
+          () => handleRouteToDetail(city.city, city.longitude, city.latitude)
+        "
+      >
         {{ city.city }}
         {{ city.state }}
         {{ city.latitude }}
@@ -30,15 +34,6 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    const cityList = await $axios.$get(
-      "https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/cities.json"
-    );
-
-    
-    // console.log(cityList);
-    return { cityList };
-  },
   data() {
     return {
       formData: {
@@ -48,28 +43,26 @@ export default {
       },
     };
   },
+  computed: {
+    cityList() {
+      return this.$store.getters.cityList;
+    }
+  },
   methods: {
     onSave() {
-      // Save the post
-      var context = this;
-      this.fetchSomething(context);
-      // this.$emit("submit", this.formData);
-    },
-    async fetchSomething(context) {
-      const ip = await context.$axios.$post(
-        "https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/cities.json",
-        context.formData
-      );
-      return { ip };
+      this.$store.dispatch("addCityToCityList", this.formData).then(() => {
+        this.$router.push("/");
+      });
     },
     onCancel() {
-      // Navigate back
       this.$router.push("/");
     },
-    handleRouteToDetail(city,long,lat){
-      // this.$router.push(`/weathers/${city}`);
-      this.$router.push({ path: `/weathers/${city}`, query: { longitude: long, latitude: lat }});
-    }
+    handleRouteToDetail(city, long, lat) {
+      this.$router.push({
+        path: `/weathers/${city}`,
+        query: { longitude: long, latitude: lat },
+      });
+    },
   },
 };
 </script>

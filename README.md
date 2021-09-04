@@ -71,5 +71,7 @@ More information about the usage of this directory in [the documentation](https:
 
 
 ### `Resource`
-1. uigradients https://uigradients.com/#MoonlitAsteroid
-2. feathericon https://feathericons.com/?query=more
+uigradients https://uigradients.com/#MoonlitAsteroid
+feathericon https://feathericons.com/?query=more
+bbox http://bboxfinder.com/#1.296276,99.942627,6.500899,104.611816
+bbox https://lab.lmnixon.org/4th/worldcapitals.html
