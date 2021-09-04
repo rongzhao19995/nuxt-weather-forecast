@@ -1,5 +1,7 @@
 # nuxt-weather-forecast <g-emoji class="g-emoji" alias="computer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4bb.png">💻</g-emoji>
 
+Weather forecasting is the application of science and technology to predict the conditions of the atmosphere for a given location and time. ... Hence, forecasts become less accurate as the difference between current time and the time for which the forecast is being made (the range of the forecast) increases.
+
 <g-emoji class="g-emoji" alias="sunny" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2600.png">☀️</g-emoji>
 <g-emoji class="g-emoji" alias="cloud" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png">☁️</g-emoji>
 <g-emoji class="g-emoji" alias="zap" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png">⚡</g-emoji>
