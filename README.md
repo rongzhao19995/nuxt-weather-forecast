@@ -51,7 +51,7 @@
   </tr>
   <tr>
     <th>1.</th>
-    <th>Provide 30 cities selection for the user to choose to check the weather</th>
+    <th> :-- Provide 30 cities selection for the user to choose to check the weather</th>
     <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
   </tr>
   <tr>
@@ -157,9 +157,10 @@ More information about the usage of this directory in [the documentation](https:
 
 
 ### `Resource`
-uigradients https://uigradients.com/#MoonlitAsteroid
-feathericon https://feathericons.com/?query=more
-bbox http://bboxfinder.com/#1.296276,99.942627,6.500899,104.611816
-bbox https://lab.lmnixon.org/4th/worldcapitals.html
+1. https://uigradients.com/#MoonlitAsteroid
+2. https://feathericons.com/?query=more
+3. http://bboxfinder.com/#1.296276,99.942627,6.500899,104.611816
+4. https://lab.lmnixon.org/4th/worldcapitals.html
 
-
+1. https://github.com/StylishThemes/GitHub-Dark/wiki/Emoji
+2. https://gist.github.com/rxaviers/7360908
