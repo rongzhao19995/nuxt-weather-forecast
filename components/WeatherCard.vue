@@ -30,11 +30,11 @@
           </div>
         </div>
         <div class="weather-container">
-          <SunnyIcon />
-          <!-- <CloudyIcon/> -->
-          <!-- <RainingIcon/> -->
+          <SunnyIcon v-if="['Clear'].includes(data.weather[0].main)"/>
+          <CloudyIcon v-if="['Clouds'].includes(data.weather[0].main)"/>
+          <RainingIcon v-if="['Thunderstorm','Rain'].includes(data.weather[0].main)"/>
           <h1 class="weather-temp">{{ celsiusToFahrenheit }} °C</h1>
-          <h3 class="weather-desc">{{ data.weather[0].main }}</h3>
+          <h3 class="weather-desc">{{ data.weather && data.weather[0].main }}</h3>
         </div>
       </div>
       <div class="info-side">
@@ -65,7 +65,7 @@
           </div>
           <div class="">
             <h1 class="mt-4 font-bold text-xl">{{ celsiusToFahrenheit }} °C</h1>
-            <h3 class="weather-desc">{{ data.weather[0].main }}</h3>
+            <h3 class="weather-desc">{{ data.weather && data.weather[0].main }}</h3>
           </div>
         </div>
 
@@ -84,6 +84,11 @@
             <div class="wind mt-2">
               <span class="title">WIND</span
               ><span class="value">{{ data.wind.speed }} km/h</span>
+              <div class="clear"></div>
+            </div>
+            <div class="sunrise mt-2">
+              <span class="title">VISIBILITY</span
+              ><span class="value">{{ data.visibility }}</span>
               <div class="clear"></div>
             </div>
             <div class="sea-level mt-2">
@@ -195,7 +200,7 @@
           </ul>
         </div>
         <div class="location-container">
-          <button class="location-button">
+          <button class="location-button" @click="$emit('detailBtnHandler', $event)">
             <svg
               viewBox="0 0 24 24"
               width="24"
@@ -223,56 +228,24 @@
 
 <script>
 export default {
-  data() {
-    return {
-      data: {
-        coord: { lon: 101.6916, lat: 3.0182 },
-        weather: [
-          {
-            id: 804,
-            main: "Clouds",
-            description: "overcast clouds",
-            icon: "04n",
-          },
-        ],
-        base: "stations",
-        main: {
-          temp: 301.55,
-          feels_like: 306.45,
-          temp_min: 299.54,
-          temp_max: 301.55,
-          pressure: 1009,
-          humidity: 81,
-          sea_level: 1009,
-          grnd_level: 996,
-        },
-        visibility: 10000,
-        wind: { speed: 1.48, deg: 91, gust: 1.53 },
-        clouds: { all: 100 },
-        dt: 1630673417,
-        sys: {
-          type: 1,
-          id: 9446,
-          country: "MY",
-          sunrise: 1630624075,
-          sunset: 1630667871,
-        },
-        timezone: 28800,
-        id: 1771304,
-        name: "Kampong Baharu Balakong",
-        cod: 200,
-      },
-    };
+  props: {
+    data: { type: Object, required: true },
   },
   computed: {
     location() {
+      if (!this.data.sys) {
+        return;
+      }
       return `${this.data.name}, ${this.data.sys.country}`;
     },
     celsiusToFahrenheit() {
+      if (!this.data.main) {
+        return;
+      }
       return (this.data.main.temp - 273.15).toFixed();
     },
     getTodayDay() {
-      var days = [
+      const days = [
         "Sunday",
         "Monday",
         "Tuesday",
@@ -281,8 +254,8 @@ export default {
         "Friday",
         "Saturday",
       ];
-      var d = new Date();
-      var dayName = days[d.getDay()];
+      const d = new Date();
+      const dayName = days[d.getDay()];
 
       return dayName;
     },
@@ -317,8 +290,8 @@ export default {
 }
 
 .weather-side {
-  @apply relative h-full rounded-3xl float-left;
-  background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
+  @apply relative h-full rounded-3xl float-left bg-black;
+  /* background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"); */
   width: 300px;
   -webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
@@ -470,8 +443,8 @@ export default {
   @apply mt-auto;
   padding: 25px 35px;
 
-   @media (max-width: 640px) {
-     @apply mt-4;
+  @media (max-width: 640px) {
+    @apply mt-4;
   }
 }
 
@@ -501,7 +474,6 @@ export default {
   margin: auto;
   left: 0;
   right: 0;
-  width:320px;
-
+  width: 320px;
 }
 </style>

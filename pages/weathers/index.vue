@@ -4,8 +4,8 @@
     <div class="data">
       {{ openWeatherMapCityWeather }}
 
-      <button @click="onClickGetLocation">get current location</button>
-      <button @click="handleData">getData</button>
+      <button @click.prevent="onClickGetLocation">get current location</button>
+      <button @click.prevent="handleData">getData</button>
     </div>
   </div>
 </template>

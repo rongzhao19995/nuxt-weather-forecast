@@ -4,7 +4,7 @@
 
     <ol v-for="(city, idx) in cityList" :key="idx">
       <button
-        @click="
+        @click.prevent="
           () => handleRouteToDetail(city.city, city.longitude, city.latitude)
         "
       >
@@ -25,7 +25,7 @@
         type="button"
         style="margin-left: 10px"
         btn-style="cancel"
-        @click="onCancel"
+        @click.prevent="onCancel"
         >Cancel</AppButton
       >
     </form>

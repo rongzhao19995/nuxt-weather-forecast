@@ -6,7 +6,7 @@ const createStore = () => {
             cityList: [],
             currentCord: {},
             openWeatherMapCircleList: {},
-            OpenWeatherMapCityWeather: {},
+            openWeatherMapCityWeather: {},
         },
         mutations: {
 
