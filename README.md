@@ -32,13 +32,6 @@
     <th></th>
   </tr>
 
- 
-  <tr>
-    <th><a href="http://expressjs.com"><img src="https://img.shields.io/badge/-ExpressJS-313131?style=flat-square&labelColor=313131&logo=express&logoColor=white&color=313131"></img></a></th>
-    <th></th>
-    <th></th>
-  </tr>
-  
   <tr>
     <th><a href="https://vuejs.org"><img src="https://img.shields.io/badge/-VueJS-313131?style=flat-square&labelColor=313131&logo=vue.js&logoColor=white&color=313131"></img></a></th>
     <th></th>
