@@ -1,4 +1,7 @@
-# nuxt-weather-forecast
+# nuxt-weather-forecast 
+<g-emoji class="g-emoji" alias="sunny" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2600.png">☀️</g-emoji>
+<g-emoji class="g-emoji" alias="cloud" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png">☁️</g-emoji>
+<g-emoji class="g-emoji" alias="zap" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png">⚡</g-emoji>
 
 ### `Technology Used`
 
