@@ -51,7 +51,7 @@
   </tr>
   <tr>
     <th>1.</th>
-    <th> :-- Provide 30 cities selection for the user to choose to check the weather</th>
+    <th> Provide 30 cities selection for the user to choose to check the weather</th>
     <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
   </tr>
   <tr>
