@@ -31,7 +31,7 @@
         </div>
         <div class="weather-container">
           <SunnyIcon v-if="['Clear'].includes(data.weather[0].main)"/>
-          <CloudyIcon v-if="['Clouds'].includes(data.weather[0].main)"/>
+          <CloudyIcon v-if="['Clouds', 'Haze'].includes(data.weather[0].main)"/>
           <RainingIcon v-if="['Thunderstorm','Rain'].includes(data.weather[0].main)"/>
           <h1 class="weather-temp">{{ celsiusToFahrenheit }} °C</h1>
           <h3 class="weather-desc">{{ data.weather && data.weather[0].main }}</h3>

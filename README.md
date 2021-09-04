@@ -169,6 +169,6 @@ More information about the usage of this directory in [the documentation](https:
 2. https://feathericons.com/?query=more
 3. http://bboxfinder.com/#1.296276,99.942627,6.500899,104.611816
 4. https://lab.lmnixon.org/4th/worldcapitals.html
-
-1. https://github.com/StylishThemes/GitHub-Dark/wiki/Emoji
-2. https://gist.github.com/rxaviers/7360908
+5. https://tailwindcomponents.com/
+6. https://github.com/StylishThemes/GitHub-Dark/wiki/Emoji
+7. https://gist.github.com/rxaviers/7360908

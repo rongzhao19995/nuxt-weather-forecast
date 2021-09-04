@@ -7,6 +7,7 @@ const createStore = () => {
             currentCord: {},
             openWeatherMapCircleList: {},
             openWeatherMapCityWeather: {},
+            openWeatherSearchingWeatherList:{},
         },
         mutations: {
 
@@ -29,6 +30,9 @@ const createStore = () => {
             },
             setOpenWeatherMapCityWeather(state, openWeatherMapCityWeather) {
                 state.openWeatherMapCityWeather = openWeatherMapCityWeather;
+            },
+            setOpenWeatherSearchingWeatherList(state, openWeatherSearchingWeatherList) {
+                state.openWeatherSearchingWeatherList = openWeatherSearchingWeatherList;
             },
         },
         actions: {
@@ -76,11 +80,21 @@ const createStore = () => {
                     })
                     .catch(e => console.log(e));
             },
+            fetchOpenWeatherSearchingWeatherListByName(vueContext, { keyword }) {
+                return this.$axios.$get(`http://api.openweathermap.org/data/2.5/find?q=${keyword}&appid=c693e03c327c176701a0473b51524b8d`)
+                    .then(data => {
+                        vueContext.commit("setOpenWeatherSearchingWeatherList", data);
+                    })
+                    .catch(e => console.log(e));
+            },
             setOpenWeatherMapCircleList(vueContext, data) {
                 vueContext.commit("setOpenWeatherMapCircleList", data);
             },
             setOpenWeatherMapCityWeather(vueContext, data) {
                 vueContext.commit("setOpenWeatherMapCityWeather", data);
+            },
+            setOpenWeatherSearchingWeatherList(vueContext, data) {
+                vueContext.commit("setOpenWeatherSearchingWeatherList", data);
             },
 
         },
@@ -102,6 +116,9 @@ const createStore = () => {
             },
             openWeatherMapCityWeather(state) {
                 return state.openWeatherMapCityWeather;
+            },
+            openWeatherSearchingWeatherList(state) {
+                return state.openWeatherSearchingWeatherList;
             }
 
         }

@@ -1,9 +1,17 @@
 <template>
-  <div class="css-icon cloudy">
+  <div class="css-icon cloudy" :class="{ sm: size === 'sm' }">
     <span class="cloud"></span>
     <span class="cloudx"></span>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    size: { type: String, required: false },
+  },
+};
+</script>
 
 <style lang="postcss" scoped>
 .css-icon {
@@ -41,6 +49,18 @@
   border-radius: 10px;
   background-color: rgba(129, 212, 250, 1);
   animation: move 3s infinite linear;
+}
+
+.css-icon.sm {
+  width: 50px;
+  height: 50px;
+}
+
+.sm .cloud {
+  width: 30px;
+}
+.sm .cloudx {
+  width: 40px;
 }
 
 @keyframes move {

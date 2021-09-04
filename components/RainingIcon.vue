@@ -1,5 +1,5 @@
 <template>
-  <div class="css-icon breezy">
+  <div class="css-icon breezy" :class="{ 'sm': size === 'sm'}">
     <ul>
       <li></li>
       <li></li>
@@ -10,6 +10,14 @@
     <span class="cloudr"></span>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    size: { type: String, required: false },
+  },
+}
+</script>
 
 <style lang="postcss" scoped>
 .css-icon {
@@ -76,6 +84,15 @@
 .breezy li:nth-child(5) {
   top: 10%;
   left: 75%;
+}
+
+.css-icon.sm {
+  width: 50px;
+  height: 50px;
+}
+
+.sm .cloudr {
+  width: 30px;
 }
 
 @keyframes fall {

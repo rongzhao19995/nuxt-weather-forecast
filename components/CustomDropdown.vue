@@ -40,7 +40,7 @@
 export default {
   props: {
     list: { type: Array, required: true },
-    value:{type: String, required: true},
+    value:{type: String, required: false},
   },
   data() {
     return {

@@ -1,9 +1,17 @@
 <template>
-  <div class="css-icon hot">
+  <div class="css-icon hot" :class="{ sm: size === 'sm' }">
     <span class="sun"></span>
     <span class="sunx"></span>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    size: { type: String, required: false },
+  },
+};
+</script>
 
 <style lang="postcss"  scoped>
 .css-icon {
@@ -47,6 +55,17 @@
   background-color: #fff;
   opacity: 0.2;
 }
+
+.css-icon.sm {
+  width: 50px;
+  height: 50px;
+}
+
+.sm .sun {
+  width: 30px;
+  height:30px;
+}
+
 @keyframes inex {
   50% {
     opacity: 0.4;

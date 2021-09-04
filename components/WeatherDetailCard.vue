@@ -6,7 +6,7 @@
         <p class="text-xl font-black pt-4">{{ location }}</p>
         <div class="weather-container" v-if="selectedDayForecast.weather">
             <SunnyIcon v-if="['Clear'].includes(selectedDayForecast.weather[0].main)"/>
-            <CloudyIcon v-if="['Clouds'].includes(selectedDayForecast.weather[0].main)"/>
+            <CloudyIcon v-if="['Clouds', 'Haze'].includes(selectedDayForecast.weather[0].main)"/>
             <RainingIcon v-if="['Thunderstorm','Rain'].includes(selectedDayForecast.weather[0].main)"/>
           <!-- <SunnyIcon /> -->
           <h1 class="weather-temp text-xl font-black pt-4">29°C</h1>
@@ -36,7 +36,7 @@
                 />
                 <img
                   v-if="
-                    ['Clouds'].includes(item.weather && item.weather[0].main)
+                    ['Clouds', 'Haze'].includes(item.weather && item.weather[0].main)
                   "
                   src="~/static/svg/cloudy.svg"
                   alt=""
@@ -77,7 +77,7 @@
                 />
                 <img
                   v-if="
-                    ['Clouds'].includes(item.weather && item.weather[0].main)
+                    ['Clouds', 'Haze'].includes(item.weather && item.weather[0].main)
                   "
                   src="~/static/svg/cloudy.svg"
                   alt=""
