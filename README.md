@@ -3,6 +3,7 @@
 ### `Technology Used`
 
 <table>
+
   <tr>
     <th>Languages</th>
     <th>Databases</th>
@@ -36,6 +37,20 @@
     <th><a href="https://vuejs.org"><img src="https://img.shields.io/badge/-VueJS-313131?style=flat-square&labelColor=313131&logo=vue.js&logoColor=white&color=313131"></img></a></th>
     <th></th>
     <th></th>
+  </tr>
+
+</table>
+
+### `Features/ Functionality`
+
+<table>
+  <tr>
+    <th>Functionality</th>
+    <th>Check</th>
+  </tr>
+  <tr>
+    <th>Provide 30 cities selection for the user to choose to check the weather</th>
+    <th><g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji></th>
   </tr>
 </table>
 
