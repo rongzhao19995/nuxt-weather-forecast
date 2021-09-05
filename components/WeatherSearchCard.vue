@@ -19,7 +19,10 @@
         </h3>
       </div>
       <div class="weather-container m-4">
-        <SunnyIcon v-if="['Clear','Drizzle'].includes(data.weather[0].main)" size="sm" />
+        <SunnyIcon
+          v-if="['Clear', 'Drizzle'].includes(data.weather[0].main)"
+          size="sm"
+        />
         <CloudyIcon
           v-if="['Clouds', 'Haze'].includes(data.weather[0].main)"
           size="sm"
@@ -104,5 +107,14 @@ export default {
     #203a43,
     #0f2027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.add-favourite {
+  &:hover {
+    & svg {
+      fill: red;
+      stroke: red;
+    }
+  }
 }
 </style>

@@ -9,7 +9,7 @@ export default {
   async asyncData(context) {
     const { latitude, longitude } = context.route.query;
     const cityList = await context.app.$axios.$get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=c693e03c327c176701a0473b51524b8d`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=840937906722893d2f73c00b953b1969`
     );
     return { cityList };
   },

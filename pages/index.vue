@@ -43,7 +43,7 @@ export default {
       lon: "101.6953",
     };
     const cityWeather = await context.app.$axios.$get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${kLCord.lat}&lon=${kLCord.lon}&appid=c693e03c327c176701a0473b51524b8d`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${kLCord.lat}&lon=${kLCord.lon}&appid=840937906722893d2f73c00b953b1969`
     );
     return { cityWeather };
   },

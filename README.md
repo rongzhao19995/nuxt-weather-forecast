@@ -172,3 +172,6 @@ More information about the usage of this directory in [the documentation](https:
 5. https://tailwindcomponents.com/
 6. https://github.com/StylishThemes/GitHub-Dark/wiki/Emoji
 7. https://gist.github.com/rxaviers/7360908
+8. https://codepen.io/rongzhao195/pen/qBjaYrb
+9. https://swiperjs.com/demos#centered-auto
+10. https://swiperjs.com/swiper-api

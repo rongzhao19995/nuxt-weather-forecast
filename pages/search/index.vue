@@ -8,10 +8,16 @@
     />
     <div class="search-result-container">
       <p
-        v-if="searchResult.length > 0"
+        v-show="searchResult.length > 0 && !resultNotFound"
         class="text-white text-xl font-bold m-4 mt-8"
       >
         Searching Result
+      </p>
+      <p
+        v-show="resultNotFound"
+        class="text-red-700 text-xl font-bold m-4 mt-8"
+      >
+        Searching Result is not found
       </p>
       <div class="search-result-container flex flex-col md:flex-row">
         <WeatherSearchCard
@@ -32,6 +38,7 @@ export default {
     return {
       searchKeyWord: "",
       searchResult: [],
+      resultNotFound: false,
     };
   },
   mounted() {
@@ -52,17 +59,19 @@ export default {
     },
   },
   methods: {
-    handleLocationSearch(){
+    handleLocationSearch() {
       const { lat, lon } = this.currentCord;
       this.$store
-        .dispatch("fetchOpenWeatherMapCityWeatherByLatLon", {lat, lon} )
+        .dispatch("fetchOpenWeatherMapCityWeatherByLatLon", { lat, lon })
         .then((data) => {
-          console.log(
-            "fetchOpenWeatherMapCityWeatherByLatLon sucess",
-            data
-          );
+          console.log("fetchOpenWeatherMapCityWeatherByLatLon sucess", data);
           this.searchResult = [];
           this.searchResult.push(data);
+          if (this.searchResult.length === 0) {
+            this.resultNotFound = true;
+          } else {
+            this.resultNotFound = false;
+          }
         });
     },
     handleSearchKey(data) {
@@ -78,7 +87,14 @@ export default {
             "fetchOpenWeatherSearchingWeatherListByName sucess",
             data
           );
+
           this.searchResult = data;
+
+          if (this.searchResult.length === 0) {
+            this.resultNotFound = true;
+          } else {
+            this.resultNotFound = false;
+          }
         });
     },
     handleAddFavourite(data) {
