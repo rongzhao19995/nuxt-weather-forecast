@@ -51,7 +51,7 @@ Weather forecasting is the application of science and technology to predict the 
 
 <table>
   <tr>
-    <th>Number></th>
+    <th>Number</th>
     <th>Functionality</th>
     <th>Check</th>
   </tr>
