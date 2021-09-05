@@ -4,10 +4,11 @@ const createStore = () => {
     return new Vuex.Store({
         state: {
             cityList: [],
+            favouriteList: [],
             currentCord: {},
             openWeatherMapCircleList: {},
             openWeatherMapCityWeather: {},
-            openWeatherSearchingWeatherList:{},
+            openWeatherSearchingWeatherList: {},
         },
         mutations: {
 
@@ -17,6 +18,12 @@ const createStore = () => {
             },
             addCityToCityList(state, city) {
                 state.cityList.push(city);
+            },
+            setFavouriteList(state, favouriteList) {
+                state.favouriteList = favouriteList;
+            },
+            addFavouriteCityToFavouriteList(state, city) {
+                state.favouriteList.push(city);
             },
 
             // Geolocation // 
@@ -59,6 +66,28 @@ const createStore = () => {
                     })
                     .catch(e => console.log(e));
             },
+            fetchFavouriteList(vueContext) {
+                return this.$axios.$get("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/favourite.json")
+                    .then(data => {
+                        const cityListArray = [];
+                        for (const key in data) {
+                            cityListArray.push({ ...data[key], id: key });
+                        }
+                        vueContext.commit("setFavouriteList", cityListArray);
+                    })
+                    .catch(e => context.error(e));
+
+            },
+            setFavouriteList(vueContext, favouriteList) {
+                vueContext.commit("setFavouriteList", favouriteList);
+            },
+            addFavouriteCityToFavouriteList(vueContext, city) {
+                return this.$axios.$post("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/favourite.json", city)
+                    .then(data => {
+                        vueContext.commit("addFavouriteCityToFavouriteList", { ...city, id: data.name });
+                    })
+                    .catch(e => console.log(e));
+            },
 
             // Geolocation // 
             setCurrentCord(vueContext, data) {
@@ -76,13 +105,15 @@ const createStore = () => {
             fetchOpenWeatherMapCityWeatherByLatLon(vueContext, { lat, lon }) {
                 return this.$axios.$get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c693e03c327c176701a0473b51524b8d`)
                     .then(data => {
-                        vueContext.commit("setOpenWeatherMapCityWeather", data);
+                        return data;
+                        // vueContext.commit("setOpenWeatherMapCityWeather", data);
                     })
                     .catch(e => console.log(e));
             },
             fetchOpenWeatherSearchingWeatherListByName(vueContext, { keyword }) {
                 return this.$axios.$get(`http://api.openweathermap.org/data/2.5/find?q=${keyword}&appid=c693e03c327c176701a0473b51524b8d`)
                     .then(data => {
+                        return data.list;
                         vueContext.commit("setOpenWeatherSearchingWeatherList", data);
                     })
                     .catch(e => console.log(e));
@@ -104,6 +135,9 @@ const createStore = () => {
             cityList(state) {
                 return state.cityList;
             },
+            favouriteList(state) {
+                return state.favouriteList;
+            },
 
             // Geolocation // 
             currentCord(state) {
@@ -119,7 +153,7 @@ const createStore = () => {
             },
             openWeatherSearchingWeatherList(state) {
                 return state.openWeatherSearchingWeatherList;
-            }
+            },
 
         }
     })

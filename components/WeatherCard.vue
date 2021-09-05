@@ -29,8 +29,8 @@
             <span class="location inline-block ml-2">{{ location }}</span>
           </div>
         </div>
-        <div class="weather-container">
-          <SunnyIcon v-if="['Clear'].includes(data.weather[0].main)"/>
+        <div class="weather-container mt-16">
+          <SunnyIcon v-if="['Clear','Drizzle'].includes(data.weather[0].main)"/>
           <CloudyIcon v-if="['Clouds', 'Haze'].includes(data.weather[0].main)"/>
           <RainingIcon v-if="['Thunderstorm','Rain'].includes(data.weather[0].main)"/>
           <h1 class="weather-temp">{{ celsiusToFahrenheit }} °C</h1>

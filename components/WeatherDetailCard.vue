@@ -4,11 +4,22 @@
       <div class="left-section p-4 flex flex-col">
         <p class="text-2xl font-black">Saturday 4 September 2021</p>
         <p class="text-xl font-black pt-4">{{ location }}</p>
-        <div class="weather-container" v-if="selectedDayForecast.weather">
-            <SunnyIcon v-if="['Clear'].includes(selectedDayForecast.weather[0].main)"/>
-            <CloudyIcon v-if="['Clouds', 'Haze'].includes(selectedDayForecast.weather[0].main)"/>
-            <RainingIcon v-if="['Thunderstorm','Rain'].includes(selectedDayForecast.weather[0].main)"/>
-          <!-- <SunnyIcon /> -->
+        <div class="weather-container mt-16" v-if="selectedDayForecast.weather">
+          <SunnyIcon
+            v-if="['Clear','Drizzle'].includes(selectedDayForecast.weather[0].main)"
+          />
+          <CloudyIcon
+            v-if="
+              ['Clouds', 'Haze'].includes(selectedDayForecast.weather[0].main)
+            "
+          />
+          <RainingIcon
+            v-if="
+              ['Thunderstorm', 'Rain'].includes(
+                selectedDayForecast.weather[0].main
+              )
+            "
+          />
           <h1 class="weather-temp text-xl font-black pt-4">29°C</h1>
           <h3 class="weather-desc text-xl font-black pt-2">Cloudy</h3>
         </div>
@@ -21,14 +32,14 @@
               v-for="(item, idx) in dailyForecastList"
               :key="idx"
               class="daily-forecast-item"
-              :class="{ active: selectedDayForecast.dt === item.dt}"
+              :class="{ active: selectedDayForecast.dt === item.dt }"
               @click="selectDailyForecast(item)"
             >
               <p>{{ getTodayDay(item.dt) }}</p>
               <div class="image-wrapper">
                 <img
                   v-if="
-                    ['Clear'].includes(item.weather && item.weather[0].main)
+                    ['Clear','Drizzle'].includes(item.weather && item.weather[0].main)
                   "
                   src="~/static/svg/sunny.svg"
                   alt=""
@@ -36,7 +47,9 @@
                 />
                 <img
                   v-if="
-                    ['Clouds', 'Haze'].includes(item.weather && item.weather[0].main)
+                    ['Clouds', 'Haze'].includes(
+                      item.weather && item.weather[0].main
+                    )
                   "
                   src="~/static/svg/cloudy.svg"
                   alt=""
@@ -58,7 +71,9 @@
           </div>
         </div>
         <div class="hour-forecast">
-          <p class="text-2xl font-black pl-0 md:pl-6 mt-6 md:mt-0">3 Hour Forecasts</p>
+          <p class="text-2xl font-black pl-0 md:pl-6 mt-6 md:mt-3">
+            3 Hour Forecasts
+          </p>
           <div class="three-hour-forecast-list flex flex-col md:flex-row mt-4">
             <div
               v-for="(item, idx) in hourlyForecastList"
@@ -69,7 +84,7 @@
               <div class="image-wrapper">
                 <img
                   v-if="
-                    ['Clear'].includes(item.weather && item.weather[0].main)
+                    ['Clear','Drizzle'].includes(item.weather && item.weather[0].main)
                   "
                   src="~/static/svg/sunny.svg"
                   alt=""
@@ -77,7 +92,9 @@
                 />
                 <img
                   v-if="
-                    ['Clouds', 'Haze'].includes(item.weather && item.weather[0].main)
+                    ['Clouds', 'Haze'].includes(
+                      item.weather && item.weather[0].main
+                    )
                   "
                   src="~/static/svg/cloudy.svg"
                   alt=""
@@ -204,12 +221,17 @@ export default {
     #203a43,
     #0f2027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    @media (max-width: 640px) {
+      @apply  rounded-none;
+  }
+
 }
 
 .daily-forecast-list {
-      @media (max-width: 640px) {
+  @media (max-width: 640px) {
     width: 300px;
-    overflow-x:scroll;
+    overflow-x: scroll;
   }
 }
 
@@ -227,6 +249,16 @@ export default {
   &:hover:not(.active) {
     @apply rounded-xl text-white;
     background-color: #0f2027;
+  }
+}
+
+.three-hour-forecast-item {
+    @media (max-width: 640px) {
+      @apply flex flex-col items-center justify-center;
+
+      &:last-child {
+        @apply mb-10;
+      }
   }
 }
 

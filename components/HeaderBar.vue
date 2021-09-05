@@ -70,8 +70,44 @@
       </div>
     </nuxt-link>
 
-    <!-- Theme -->
-    <nuxt-link to="/addCities">
+    <!-- Favourite -->
+    <nuxt-link to="/favourites">
+      <div
+        class="
+          h-10
+          w-10
+          flex
+          items-center
+          justify-center
+          rounded-lg
+          cursor-pointer
+          hover:text-gray-800
+          hover:bg-white
+          hover:duration-300
+          hover:ease-linear
+          focus:bg-white
+        "
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="css-i6dzq1"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          ></path>
+        </svg>
+      </div>
+    </nuxt-link>
+
+    <!-- Admin -->
+    <!-- <nuxt-link to="/addCities">
       <div
         class="
           h-10
@@ -103,7 +139,8 @@
           />
         </svg>
       </div>
-    </nuxt-link>
+    </nuxt-link> -->
+
     <!-- Configuration -->
     <div
       class="

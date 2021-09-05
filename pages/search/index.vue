@@ -1,9 +1,26 @@
 <template>
-  <div class="flex flex-col justify-center items-center min-h-screen">
-    <CustomSearch @searchClicked="handleSearchKey" />
-    <p class="text-white text-xl">Suggest Searching</p>
-    <div class="search-result-container flex flex-row">
-        <WeatherSearchCard v-for="(item, idx) in searchResult" :key="idx" :data="item"/>
+  <div
+    class="flex flex-col justify-center items-center min-h-screen py-16 md:py-0"
+  >
+    <CustomSearch
+      @searchClicked="handleSearchKey"
+      @locationClicked="handleLocationSearch"
+    />
+    <div class="search-result-container">
+      <p
+        v-if="searchResult.length > 0"
+        class="text-white text-xl font-bold m-4 mt-8"
+      >
+        Searching Result
+      </p>
+      <div class="search-result-container flex flex-col md:flex-row">
+        <WeatherSearchCard
+          v-for="(item, idx) in searchResult"
+          :key="idx"
+          :data="item"
+          @addFavourite="handleAddFavourite"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -14,14 +31,40 @@ export default {
   data() {
     return {
       searchKeyWord: "",
+      searchResult: [],
     };
   },
+  mounted() {
+    this.$store.dispatch("fetchFavouriteList").then(() => {
+      console.log("fetchFavouriteList sucess");
+    });
+
+    this.$store.dispatch("setOpenWeatherMapCityWeather", []).then(() => {
+      console.log("setOpenWeatherMapCityWeather success ");
+    });
+  },
   computed: {
-    searchResult() {
-      return this.$store.getters.openWeatherSearchingWeatherList.list;
+    currentCord() {
+      return this.$store.getters.currentCord;
+    },
+    favouriteList() {
+      return this.$store.getters.favouriteList;
     },
   },
   methods: {
+    handleLocationSearch(){
+      const { lat, lon } = this.currentCord;
+      this.$store
+        .dispatch("fetchOpenWeatherMapCityWeatherByLatLon", {lat, lon} )
+        .then((data) => {
+          console.log(
+            "fetchOpenWeatherMapCityWeatherByLatLon sucess",
+            data
+          );
+          this.searchResult = [];
+          this.searchResult.push(data);
+        });
+    },
     handleSearchKey(data) {
       this.searchKeyWord = data;
       console.log(this.searchKeyWord);
@@ -30,8 +73,32 @@ export default {
         .dispatch("fetchOpenWeatherSearchingWeatherListByName", {
           keyword: this.searchKeyWord,
         })
+        .then((data) => {
+          console.log(
+            "fetchOpenWeatherSearchingWeatherListByName sucess",
+            data
+          );
+          this.searchResult = data;
+        });
+    },
+    handleAddFavourite(data) {
+      if (this.favouriteList.length > 2) {
+        alert("You already added 3 Favourite. Reaching Maximum!");
+        return;
+      }
+
+      console.log("handleAddFavourite", data);
+      let formData = {
+        name: data.name,
+        country: data.sys.country,
+        lat: data.coord.lat,
+        lon: data.coord.lon,
+      };
+
+      this.$store
+        .dispatch("addFavouriteCityToFavouriteList", formData)
         .then(() => {
-          console.log("sucess");
+          this.$router.push("/favourites");
         });
     },
   },

@@ -15,7 +15,7 @@ export default {
 
 <style lang="postcss" scoped>
 .css-icon {
-  @apply relative mt-16;
+  @apply relative;
   width: 100px;
   height: 100px;
   border-radius: 40%;
