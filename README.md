@@ -94,7 +94,7 @@ Weather forecasting is the application of science and technology to predict the 
 
 ### `LIVE URL `
 
-<p align="center">
+<p>
 https://competent-lalande-ef6b93.netlify.app/
 </p>
 
