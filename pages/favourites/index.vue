@@ -90,7 +90,7 @@ export default {
         return [];
       }
       return this.favouriteList.map((list) => {
-        return `http://api.openweathermap.org/data/2.5/weather?lat=${list.lat}&lon=${list.lon}&appid=840937906722893d2f73c00b953b1969`;
+        return `https://api.openweathermap.org/data/2.5/weather?lat=${list.lat}&lon=${list.lon}&appid=840937906722893d2f73c00b953b1969`;
       });
     },
   },

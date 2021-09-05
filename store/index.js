@@ -96,14 +96,14 @@ const createStore = () => {
 
             // Open Weather Map // 
             fetchOpenWeatherMapCircleListByLatLon(vueContext, { lat, lon }) {
-                return this.$axios.$get(`http://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&appid=840937906722893d2f73c00b953b1969`)
+                return this.$axios.$get(`https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&appid=840937906722893d2f73c00b953b1969`)
                     .then(data => {
                         vueContext.commit("setOpenWeatherMapCircleList", data);
                     })
                     .catch(e => console.log(e));
             },
             fetchOpenWeatherMapCityWeatherByLatLon(vueContext, { lat, lon }) {
-                return this.$axios.$get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=840937906722893d2f73c00b953b1969`)
+                return this.$axios.$get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=840937906722893d2f73c00b953b1969`)
                     .then(data => {
                         vueContext.commit("setOpenWeatherMapCityWeather", data);
                         return data;
@@ -111,7 +111,7 @@ const createStore = () => {
                     .catch(e => console.log(e));
             },
             fetchOpenWeatherSearchingWeatherListByName(vueContext, { keyword }) {
-                return this.$axios.$get(`http://api.openweathermap.org/data/2.5/find?q=${keyword}&appid=840937906722893d2f73c00b953b1969`)
+                return this.$axios.$get(`https://api.openweathermap.org/data/2.5/find?q=${keyword}&appid=840937906722893d2f73c00b953b1969`)
                     .then(data => {
                         return data.list;
                         // vueContext.commit("setOpenWeatherSearchingWeatherList", data);
