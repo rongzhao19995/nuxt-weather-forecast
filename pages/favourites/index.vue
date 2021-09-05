@@ -10,7 +10,7 @@
         min-h-screen
       "
     >
-      <div v-if="displayResult.length > 0" class="z-0 mt-60 md:mt-32">
+      <div v-if="displayResult.length > 0">
         <div class="swiper-container">
           <div v-swiper:mySwiper="options">
             <div class="swiper-wrapper">
@@ -29,6 +29,12 @@
             </div>
           </div>
         </div>
+      </div>
+      <div v-if="displayResult.length === 0 " class="no-result">
+        <h1 class="text-3xl text-white">You dont not have add any favourite city on the list</h1>
+        <nuxt-link to="/search">
+          <div class="cta-btn mt-6 mx-auto">ADD NOW</div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -133,5 +139,20 @@ export default {
 }
 .swiper-slide__content {
   height: 300px;
+}
+
+.cta-btn {
+  @apply relative outline-none w-full border-none rounded-3xl p-2 text-white font-bold cursor-pointer py-4 flex flex-col  items-center;
+  width: 200px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
+  -webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+  -webkit-transition: -webkit-transform 200ms ease;
+  transition: -webkit-transform 200ms ease;
+  -o-transition: transform 200ms ease;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease, -webkit-transform 200ms ease;
 }
 </style>
