@@ -105,8 +105,8 @@ const createStore = () => {
             fetchOpenWeatherMapCityWeatherByLatLon(vueContext, { lat, lon }) {
                 return this.$axios.$get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=840937906722893d2f73c00b953b1969`)
                     .then(data => {
+                        vueContext.commit("setOpenWeatherMapCityWeather", data);
                         return data;
-                        // vueContext.commit("setOpenWeatherMapCityWeather", data);
                     })
                     .catch(e => console.log(e));
             },
@@ -114,7 +114,7 @@ const createStore = () => {
                 return this.$axios.$get(`http://api.openweathermap.org/data/2.5/find?q=${keyword}&appid=840937906722893d2f73c00b953b1969`)
                     .then(data => {
                         return data.list;
-                        vueContext.commit("setOpenWeatherSearchingWeatherList", data);
+                        // vueContext.commit("setOpenWeatherSearchingWeatherList", data);
                     })
                     .catch(e => console.log(e));
             },

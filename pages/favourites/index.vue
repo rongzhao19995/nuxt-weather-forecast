@@ -3,8 +3,10 @@
     <div
       class="
         dark_overlay
-        flex flex-col
-        md:justify-center
+        flex
+        flex-col
+        md:flex-row
+        justify-center
         items-center
         sm:justify-start
         min-h-screen
@@ -109,6 +111,18 @@ export default {
       // immediate: true,
       handler: "callAPI",
     },
+  },
+    head() {
+    return {
+      title: "Dashboard Of Favoruite City | Weather Forecast By LANCE ",
+      meta: [
+        {
+          hid: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          name: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          content: "Weather Forecast By LANCE | Home HID SEO Purpose",
+        },
+      ],
+    };
   },
 };
 </script>

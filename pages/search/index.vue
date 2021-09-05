@@ -118,5 +118,17 @@ export default {
         });
     },
   },
+  head() {
+    return {
+      title: "Search Your Favourite City | Weather Forecast By LANCE ",
+      meta: [
+        {
+          hid: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          name: "Weather Forecast By LANCE | Home HID SEO Purpose",
+          content: "Weather Forecast By LANCE | Home HID SEO Purpose",
+        },
+      ],
+    };
+  },
 };
 </script>
