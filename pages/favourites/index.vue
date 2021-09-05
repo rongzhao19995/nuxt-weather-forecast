@@ -1,10 +1,18 @@
 <template>
-  <div class="screen-mode section flex flex-col items-center min-h-screen overflow-x-hidden">
+  <div
+    class="
+      screen-mode
+      section
+      flex flex-col
+      items-center
+      min-h-screen
+      overflow-x-hidden
+    "
+  >
     <div
       class="
         dark_overlay
-        flex
-        flex-col
+        flex flex-col
         md:flex-row
         justify-center
         items-center
@@ -26,14 +34,16 @@
                   @detailBtnHandler="handleRouteToDetail(item)"
                 />
               </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
             </div>
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
           </div>
         </div>
       </div>
-      <div v-if="displayResult.length === 0 " class="no-result">
-        <h1 class="text-3xl text-white">You dont not have add any favourite city on the list</h1>
+      <div v-if="displayResult.length === 0" class="no-result">
+        <h1 class="text-3xl text-white">
+          You dont not have add any favourite city on the list
+        </h1>
         <nuxt-link to="/search">
           <div class="cta-btn mt-6 mx-auto">ADD NOW</div>
         </nuxt-link>
@@ -48,16 +58,21 @@ export default {
     return {
       displayResult: [],
       options: {
-        slidesPerView: 1,
+        slidesPerView: 1.8,
+					breakpoints: {
+						768: {
+							slidesPerView: 1,
+						},
+					},
         loop: false,
         spaceBetween: 1,
         centeredSlides: true,
         roundLengths: true,
         slideToClickedSlide: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
+        // navigation: {
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev",
+        // },
       },
     };
   },
@@ -102,7 +117,7 @@ export default {
       const { lat, lon } = data.coord;
       this.$router.push({
         path: `/weathers/${city}`,
-        query: { longitude: lon, latitude: lat},
+        query: { longitude: lon, latitude: lat },
       });
     },
   },
@@ -112,7 +127,7 @@ export default {
       handler: "callAPI",
     },
   },
-    head() {
+  head() {
     return {
       title: "Dashboard Of Favoruite City | Weather Forecast By LANCE ",
       meta: [
