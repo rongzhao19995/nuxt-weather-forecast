@@ -94,11 +94,21 @@ Weather forecasting is the application of science and technology to predict the 
 
 
 ### `Final Product GIF`
+
 <p align="center">
-  <img src="https://i.imgur.com/c08H9id.gif" alt="drawing" width="1000" />
+  <img src="https://i.imgur.com/c08H9id.gif" alt="drawing" width="600" />
 </p>
+
 <p align="center">
-  <img src="https://i.imgur.com/ssLjO1p.gif" alt="drawing" width="1000" />
+  <img src="https://i.imgur.com/ssLjO1p.gif" alt="drawing" width="600" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/TQljFI0.gif" alt="drawing" width="600" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/s5CWO6G.gif" alt="drawing" width="600" />
 </p>
 
 
