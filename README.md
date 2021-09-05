@@ -108,8 +108,9 @@ Weather forecasting is the application of science and technology to predict the 
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/s5CWO6G.gif" alt="drawing" width="600" />
+  For more UI, click on the the following link. https://github.com/rongzhao19995/nuxt-weather-forecast/tree/main/Gif
 </p>
+
 
 
 ## Build Setup
