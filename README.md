@@ -196,3 +196,4 @@ More information about the usage of this directory in [the documentation](https:
 8. https://codepen.io/rongzhao195/pen/qBjaYrb
 9. https://swiperjs.com/demos#centered-auto
 10. https://swiperjs.com/swiper-api
+11. https://github.com/nuxt-community/proxy-module

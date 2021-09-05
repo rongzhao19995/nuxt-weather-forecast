@@ -12,7 +12,8 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { "http-equiv": 'cache-control', content: "upgrade-insecure-requests" },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -45,12 +46,18 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
 
   axios: {
+    // proxy: true,
     credentials: false,
     retry: { retries: 3 },
   },
+
+  // proxy: {
+  //   '/api/': { target: 'https://api.example.com/', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
