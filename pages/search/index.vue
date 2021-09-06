@@ -132,7 +132,7 @@ export default {
     },
     handleRemoveAllFavourite(data){
         this.$store
-        .dispatch("removeFavouriteCityToFavouriteList", data)
+        .dispatch("removeAllFavouriteCityToFavouriteList", data)
         .then(() => {
           // this.$router.push("/favourites");
         });
