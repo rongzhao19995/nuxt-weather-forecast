@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center min-h-screen md:py-16">
     <WeatherDetailCard :data="cityList" />
   </div>
 </template>

@@ -1,34 +1,27 @@
 <template>
-  <div class="screen-mode section flex flex-col items-center min-h-screen">
-    <div
-      class="
-        dark_overlay
-        flex flex-col
-        md:justify-center
-        items-center
-        sm:justify-start
-        min-h-screen
-      "
-    >
-      <!-- <Tutorial /> -->
-      <!-- <SampleComponent /> -->
-      <div class="z-10 mt-10 md:mt-20">
-        <CustomDropdown
-          :list="constructCityList"
-          :value="selectedCity.city"
-          @selectHandler="dropdownSelected"
-        />
-      </div>
-      <!-- <transition name="fade"> -->
-      <div class="z-0 mt-60 md:mt-32" :key="displayWeather.name">
-        <WeatherCard
-          :data="displayWeather"
-          @detailBtnHandler="handleRouteToDetail"
-        />
-      </div>
-      <!-- </transition> -->
-      <!-- <SampleSwiper/> -->
-      <!-- {{cityList}} -->
+  <div
+    class="
+      screen-mode
+      section
+      flex flex-col
+      md:justify-center
+      items-center
+      min-h-screen
+      md:py-16
+    "
+  >
+    <div class="z-10 mt-10 md:mt-0">
+      <CustomDropdown
+        :list="constructCityList"
+        :value="selectedCity.city"
+        @selectHandler="dropdownSelected"
+      />
+    </div>
+    <div class="z-0 mt-60 md:mt-20" :key="displayWeather.name">
+      <WeatherCard
+        :data="displayWeather"
+        @detailBtnHandler="handleRouteToDetail"
+      />
     </div>
   </div>
 </template>
@@ -71,6 +64,9 @@ export default {
   computed: {
     cityList() {
       return this.$store.getters.cityList;
+    },
+    favouriteList() {
+      return this.$store.getters.favouriteList;
     },
     constructCityList() {
       return this.cityList.map((city) => {
@@ -166,10 +162,5 @@ export default {
     position: relative;
     background-image: url(https://images.unsplash.com/photo-1587502536575-6dfba0a6e017?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);
   }
-}
-.dark_overlay {
-  /* background-color: rgba(0, 0, 0, 0.65);
-  height: 100vh;
-  width: 100%; */
 }
 </style>

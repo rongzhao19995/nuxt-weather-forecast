@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center min-h-screen py-16 md:py-0"
+    class="flex flex-col justify-center items-center min-h-screen py-16 mx-4"
   >
     <CustomSearch
       @searchClicked="handleSearchKey"
@@ -28,6 +28,21 @@
         />
       </div>
     </div>
+    <div v-if="favouriteList.length > 0" class="current-favourite-container mt-8 md:mt-16">
+      <p class="text-white text-xl font-bold m-4 mt-8">
+        Current Favourite List
+      </p>
+      <CustomButton :ctaName="'Remove All'" @btnClickHandler="handleRemoveAllFavourite" class="w-1/2"/>
+      <div class="search-result-container flex flex-col md:flex-row">
+        <WeatherSearchCard
+          v-for="(item, idx) in favouriteList"
+          :key="idx"
+          :data="item"
+          favourited
+          @removeFavourite="handleRemoveFavourite"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,15 +55,6 @@ export default {
       searchResult: [],
       resultNotFound: false,
     };
-  },
-  mounted() {
-    this.$store.dispatch("fetchFavouriteList").then(() => {
-      console.log("fetchFavouriteList sucess");
-    });
-
-    this.$store.dispatch("setOpenWeatherMapCityWeather", []).then(() => {
-      console.log("setOpenWeatherMapCityWeather success ");
-    });
   },
   computed: {
     currentCord() {
@@ -117,6 +123,20 @@ export default {
           this.$router.push("/favourites");
         });
     },
+    handleRemoveFavourite(data){
+        this.$store
+        .dispatch("removeFavouriteCityToFavouriteListById", data)
+        .then(() => {
+          // this.$router.push("/favourites");
+        });
+    },
+    handleRemoveAllFavourite(data){
+        this.$store
+        .dispatch("removeFavouriteCityToFavouriteList", data)
+        .then(() => {
+          // this.$router.push("/favourites");
+        });
+    }
   },
   head() {
     return {

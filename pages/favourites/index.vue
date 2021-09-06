@@ -4,50 +4,40 @@
       screen-mode
       section
       flex flex-col
+      justify-center
       items-center
       min-h-screen
       overflow-x-hidden
+      py-16
     "
   >
-    <div
-      class="
-        dark_overlay
-        flex flex-col
-        md:flex-row
-        justify-center
-        items-center
-        sm:justify-start
-        min-h-screen
-      "
-    >
-      <div v-if="displayResult.length > 0">
-        <div class="swiper-container">
-          <div v-swiper:mySwiper="options">
-            <div class="swiper-wrapper">
-              <div
-                v-for="(item, idx) in displayResult"
-                :key="idx"
-                class="swiper-slide flex flex-row"
-              >
-                <WeatherCard
-                  :data="item"
-                  @detailBtnHandler="handleRouteToDetail(item)"
-                />
-              </div>
+    <div v-if="displayResult.length > 0">
+      <div class="swiper-container">
+        <div v-swiper:mySwiper="options">
+          <div class="swiper-wrapper">
+            <div
+              v-for="(item, idx) in displayResult"
+              :key="idx"
+              class="swiper-slide flex flex-row"
+            >
+              <WeatherCard
+                :data="item"
+                @detailBtnHandler="handleRouteToDetail(item)"
+              />
             </div>
-            <!-- <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div> -->
           </div>
+          <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
         </div>
       </div>
-      <div v-if="displayResult.length === 0" class="no-result">
-        <h1 class="text-3xl text-white">
-          You dont not have add any favourite city on the list
-        </h1>
-        <nuxt-link to="/search">
-          <div class="cta-btn mt-6 mx-auto">ADD NOW</div>
-        </nuxt-link>
-      </div>
+    </div>
+    <div v-if="displayResult.length === 0" class="no-result">
+      <h1 class="text-3xl text-white">
+        You dont not have add any favourite city on the list
+      </h1>
+      <nuxt-link to="/search">
+        <div class="cta-btn mt-6 mx-auto">ADD NOW</div>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -57,13 +47,14 @@ export default {
   data() {
     return {
       displayResult: [],
+      fetchList: [],
       options: {
         slidesPerView: 1.8,
-					breakpoints: {
-						768: {
-							slidesPerView: 1,
-						},
-					},
+        breakpoints: {
+          768: {
+            slidesPerView: 1,
+          },
+        },
         loop: false,
         spaceBetween: 1,
         centeredSlides: true,
@@ -77,24 +68,23 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("fetchFavouriteList").then(() => {
-      console.log("fetchFavouriteList sucess");
-    });
+    if (this.favouriteList.length > 0) {
+      this.fetchList = this.createFetchList();
+      this.callAPI();
+    }
   },
   computed: {
     favouriteList() {
       return this.$store.getters.favouriteList;
     },
-    fetchList() {
-      if (this.favouriteList.length === 0) {
-        return [];
-      }
-      return this.favouriteList.map((list) => {
-        return `https://api.openweathermap.org/data/2.5/weather?lat=${list.lat}&lon=${list.lon}&appid=840937906722893d2f73c00b953b1969`;
-      });
-    },
   },
   methods: {
+    createFetchList() {
+      const result = this.favouriteList.map((list) => {
+        return `https://api.openweathermap.org/data/2.5/weather?lat=${list.lat}&lon=${list.lon}&appid=840937906722893d2f73c00b953b1969`;
+      });
+      return result;
+    },
     callAPI() {
       const PromiseArr = [];
       for (let i = 0; i < this.fetchList.length; i++) {
@@ -121,12 +111,6 @@ export default {
       });
     },
   },
-  watch: {
-    fetchList: {
-      // immediate: true,
-      handler: "callAPI",
-    },
-  },
   head() {
     return {
       title: "Dashboard Of Favoruite City | Weather Forecast By LANCE ",
@@ -145,20 +129,17 @@ export default {
 
 <style lang="postcss" scoped>
 .swiper-container {
-  position: relative;
+  @apply relative;
   width: 90vw;
   height: 300px;
 }
 .swiper-container > .swiper-slide__content {
-  position: absolute;
-  top: 0;
+  @apply absolute top-0;
 }
 
 .swiper-slide {
+  @apply flex justify-center items-center;
   height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 200ms linear;
   transform: scale(0.8);
 
@@ -171,7 +152,7 @@ export default {
 }
 
 .cta-btn {
-  @apply relative outline-none w-full border-none rounded-3xl p-2 text-white font-bold cursor-pointer py-4 flex flex-col  items-center;
+  @apply relative outline-none w-full border-none rounded-3xl p-2 text-white font-bold cursor-pointer py-4 flex flex-col items-center;
   width: 200px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;

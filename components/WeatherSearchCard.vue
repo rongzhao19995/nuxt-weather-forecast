@@ -10,7 +10,7 @@
     "
   >
     <div class="top-section flex">
-      <div class="flex flex-col justify-center">
+      <div v-if="data.main" class="flex flex-col justify-center">
         <h1 class="weather-temp text-xl font-bold">
           {{ celsiusToFahrenheit }} °C
         </h1>
@@ -18,7 +18,7 @@
           {{ data.weather && data.weather[0].main }}
         </h3>
       </div>
-      <div class="weather-container m-4">
+      <div v-if="data.weather" class="weather-container m-4">
         <SunnyIcon
           v-if="['Clear', 'Drizzle'].includes(data.weather[0].main)"
           size="sm"
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="bottom-section flex justify-center">
-      <p class="text-3xl font-black font-white">{{ data.name }}</p>
+      <p class="text-3xl font-black font-white px-3">{{ data.name }}</p>
     </div>
     <div
       class="
@@ -51,7 +51,8 @@
         cursor-pointer
         hover:bg-gray-300
       "
-      @click="$emit('addFavourite', data)"
+      :class="{ 'favourited' : favourited }"
+      @click="favourited ? $emit('removeFavourite', data) : $emit('addFavourite', data)"
     >
       <svg
         viewBox="0 0 24 24"
@@ -76,6 +77,7 @@
 export default {
   props: {
     data: { type: Object, required: true },
+    favourited: { type: Boolean, default: false },
   },
   computed: {
     celsiusToFahrenheit() {
@@ -110,6 +112,15 @@ export default {
 }
 
 .add-favourite {
+
+  &.favourited {
+
+    & svg {
+      fill: red;
+      stroke: red;
+    }
+  }
+
   &:hover {
     & svg {
       fill: red;

@@ -25,6 +25,13 @@ const createStore = () => {
             addFavouriteCityToFavouriteList(state, city) {
                 state.favouriteList.push(city);
             },
+            removeFavouriteCityToFavouriteListById(state, cityId) {
+                const newArray = state.favouriteList.filter(data => data.id !== cityId);
+                state.favouriteList = newArray;
+            },
+            removeAllFavouriteCityToFavouriteList(state) {
+                state.favouriteList = [];
+            },
 
             // Geolocation // 
             setCurrentCord(state, currentCord) {
@@ -43,8 +50,20 @@ const createStore = () => {
             },
         },
         actions: {
-            nuxtServerInit(vueContext, context) {
-                return context.app.$axios.$get("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/cities.json")
+            async nuxtServerInit(vueContext, context) {
+
+                try {
+                    await context.store.dispatch('fetchCityList');
+                    await context.store.dispatch('fetchFavouriteList');
+                } catch (e) {
+                    e => context.error(e)
+                }
+
+            },
+
+            // Firebase //
+            fetchCityList(vueContext) {
+                return this.$axios.$get("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/cities.json")
                     .then(data => {
                         const cityListArray = [];
                         for (const key in data) {
@@ -53,9 +72,8 @@ const createStore = () => {
                         vueContext.commit("setCityList", cityListArray);
                     })
                     .catch(e => context.error(e));
-            },
 
-            // Firebase //
+            },
             setCityList(vueContext, cityList) {
                 vueContext.commit("setCityList", cityList);
             },
@@ -85,6 +103,20 @@ const createStore = () => {
                 return this.$axios.$post("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/favourite.json", city)
                     .then(data => {
                         vueContext.commit("addFavouriteCityToFavouriteList", { ...city, id: data.name });
+                    })
+                    .catch(e => console.log(e));
+            },
+            removeFavouriteCityToFavouriteListById(vueContext, city) {
+                return this.$axios.$delete(`https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/favourite/${city.id}.json`)
+                    .then(data => {
+                        vueContext.commit("removeFavouriteCityToFavouriteListById", city.id);
+                    })
+                    .catch(e => console.log(e));
+            },
+            removeAllFavouriteCityToFavouriteList(vueContext, city) {
+                return this.$axios.$delete("https://weather-forecase-nuxt-default-rtdb.asia-southeast1.firebasedatabase.app/favourite.json")
+                    .then(data => {
+                        vueContext.commit("removeAllFavouriteCityToFavouriteList");
                     })
                     .catch(e => console.log(e));
             },

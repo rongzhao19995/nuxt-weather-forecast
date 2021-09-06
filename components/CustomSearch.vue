@@ -12,12 +12,14 @@
     x-data="{ search: '' }"
   >
     <div class="w-full">
-      <input
-        type="search"
-        class="w-full px-4 py-1 text-white rounded-full focus:outline-none"
-        placeholder="search"
-        v-model="search"
-      />
+      <form v-on:submit.prevent="handleSubmit">
+        <input
+          type="search"
+          class="w-full px-4 py-1 text-white rounded-full focus:outline-none"
+          placeholder="search"
+          v-model="search"
+        />
+      </form>
     </div>
     <div>
       <button
@@ -120,7 +122,7 @@ export default {
         .dispatch("setCurrentCord", { lat: latitude, lon: longitude })
         .then(() => {
           console.log("sucess");
-          this.search = 'Use Geolocation'
+          this.search = "Use Geolocation";
           this.$emit("locationClicked");
         });
     },
