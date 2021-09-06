@@ -7,7 +7,7 @@
       md:justify-center
       items-center
       min-h-screen
-      md:py-16
+      md:pb-16
     "
   >
     <div class="z-10 mt-10 md:mt-0">

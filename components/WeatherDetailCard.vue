@@ -2,7 +2,7 @@
   <div class="weather-detail-card">
     <div class="container flex flex-col md:flex-row p-4 md:p-12">
       <div class="left-section p-4 flex flex-col">
-        <p class="text-2xl font-black">Saturday 4 September 2021</p>
+        <p class="text-2xl font-black">{{ selectedDay }}  {{ selectedDate }}</p>
         <p class="text-xl font-black pt-4">{{ location }}</p>
         <div class="weather-container mt-16" v-if="selectedDayForecast.weather">
           <SunnyIcon
@@ -20,8 +20,8 @@
               )
             "
           />
-          <h1 class="weather-temp text-xl font-black pt-4">29°C</h1>
-          <h3 class="weather-desc text-xl font-black pt-2">Cloudy</h3>
+          <h1 class="weather-temp text-xl font-black pt-4">{{ celsiusToFahrenheit(selectedDayForecast.main.temp) }}°C</h1>
+          <h3 class="weather-desc text-xl font-black pt-2">{{ selectedDayForecast.weather[0].main }}</h3>
         </div>
       </div>
       <div class="right-section p-4">
@@ -138,6 +138,20 @@ export default {
     this.selectedDayForecast = this.dailyForecastList[0];
   },
   computed: {
+    selectedDay(){
+      if(!this.selectedDayForecast.dt){
+        return;
+      }
+
+      return this.getTodayDay(this.selectedDayForecast.dt);
+
+    },
+    selectedDate(){
+      if(!this.selectedDayForecast.main){
+        return;
+      }
+      return this.selectedDayForecast.dt_txt.split(" ")[0];
+    },
     location() {
       if (!this.data.city) {
         return;
